@@ -4,7 +4,8 @@ In 2021, Tradesolution built a new platform for Kjederegisteret. We changed some
 The new api can be found here: https://kjederegisteretapi.tradesolution.no/swagger/index.html
 
 # What has changed?
-- Enhet is the main data structure, which is the store/kiosk/school etc. They still have løpenummer as the identity number.
+- Enhet is the main data structure, which is the store/kiosk/school etc. They still have løpenummer as their identity field.
+- All identity fields are of type string even though løpenummer, GLN, organisasjonsnummer etc look like numbers. This is because they are identifiers and it does not make sense to do arithmetic on them.  
 - The concept Kjeder is cleaned up and will only be real Kjeder where enheter share marketing profile like Rema 1000 and Kiwi. In the old files, everything had to be in a kjede, which gave some strange structures for i.e. Innkjøpssamarbeid. We no longer use HKODE, but two different types of kjeder: Markedskjede (product range focus) and Regionalkjede (geographic focus). Enheter are no longer required to be in a kjede, but if they are, they can only be in one type at any given point
 - Enhetsgruppering is a new concept introduced to capture groupings of enheter, but they are not limited to only one membership at a time. Currently, we have three types: Innkjøpssamarbeid, Offentlig innkjøp and Grossistgruppering. This allows an enhet to be member of two Innkjøpssamarbeid at the same time. Enheter are not required to be a member of 
 - Innkjøpssamarbeid and Kommuner are moved from Kjeder to Enhetsgruppering. Kommuner will use the type Offentlig innkjøp
